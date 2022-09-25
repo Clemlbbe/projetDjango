@@ -19,11 +19,11 @@ urlpatterns = [
     path('error404',views.error404,name="error404"),
     path('portfolioBoxed2Col',views.portfolioBoxed2Col,name="portfolioBoxed2Col"),
     path('singlePortfolioCarousel',views.singlePortfolioCarousel,name="singlePortfolioCarousel"),
+    path('boxedMasonry4Col',views.boxedMasonry4Col,name="boxedMasonry4Col"),
     path('blogGrid2ColSidebar',views.blogGrid2ColSidebar,name="blogGrid2ColSidebar"),
     path('blogTraditional',views.blogTraditional,name="blogTraditional"),
     path('blogTraditionalSidebar',views.blogTraditionalSidebar,name="blogTraditionalSidebar"),
     path('singlePostThin',views.singlePostThin,name="singlePostThin"),
     path('indexShop',views.indexShop,name="indexShop"),
     path('singleProduct',views.singleProduct,name="singleProduct"),
-
 ]

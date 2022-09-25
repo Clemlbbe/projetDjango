@@ -54,6 +54,9 @@ def portfolioBoxed2Col(request):
 def singlePortfolioCarousel(request):
     return render(request,"single-portfolio-carousel.html")
 
+def boxedMasonry4Col(request):
+    return render(request,"portfolio-boxed-masonry-4-col.html")
+
 def blogGrid2ColSidebar(request):
     return render(request,"blog-grid-2col-sidebar.html")
 
@@ -71,3 +74,5 @@ def indexShop(request):
 
 def singleProduct(request):
     return render(request,"single-product.html")
+
+
