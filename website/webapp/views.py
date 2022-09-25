@@ -47,3 +47,27 @@ def contacts2(request):
 
 def error404(request):
     return render(request,"error404.html")
+
+def portfolioBoxed2Col(request):
+    return render(request,"portfolio-boxed-grid-2col.html")
+
+def singlePortfolioCarousel(request):
+    return render(request,"single-portfolio-carousel.html")
+
+def blogGrid2ColSidebar(request):
+    return render(request,"blog-grid-2col-sidebar.html")
+
+def blogTraditional(request):
+    return render(request,"blog-traditional.html")
+
+def blogTraditionalSidebar(request):
+    return render(request,"blog-traditional-sidebar.html")
+
+def singlePostThin(request):
+    return render(request,"single-post-thin.html")
+
+def indexShop(request):
+    return render(request,"index-shop.html")
+
+def singleProduct(request):
+    return render(request,"single-product.html")
