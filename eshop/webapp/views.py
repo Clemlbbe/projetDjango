@@ -2,6 +2,7 @@ from http.client import HTTPResponse
 from unicodedata import name
 from django.shortcuts import render
 from .models import *
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -72,17 +73,11 @@ def singlePostThin(request):
     return render(request,"single-post-thin.html")
 
 def indexShop(request):
-    products =  Product.objects.all()
-    listProductsPrices = []
-    for product in products:
-        productSizes = Size.objects.all()
-        if productSizes:
-            minimumSize = productSizes.first()
-            for productSize in productSizes:
-                if productSize.name < minimumSize.name:
-                    minimumSize = productSize.name
-        listProductsPrices.append((product,minimumSize.price))
-    return render(request,"index-shop.html", {"products": products, "listProductsPrices": listProductsPrices})
+    productsList =  Product.objects.all()
+    paginator = Paginator(productsList,2)
+    page = request.GET.get('page')
+    products = paginator.get_page(page)
+    return render(request,"index-shop.html", {"products": products})
 
 def singleProduct(request, productUrl):
     productName = productUrl.replace('-',' ')

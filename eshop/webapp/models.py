@@ -37,6 +37,12 @@ class Product(models.Model):
 	name = models.CharField(max_length=255)
 	description = models.CharField(max_length=255)
 	image = models.CharField(max_length=255, null=True)
+	minimumPrice = MoneyField(
+        decimal_places=2,
+        default=0,
+        default_currency='EUR',
+        max_digits=19,
+	)
 	category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
 
 	def __str__(self):
@@ -76,12 +82,13 @@ class Flavour(models.Model):
 
 class Size(models.Model):
 	name = models.CharField(max_length=255,null=True)
+	size = models.CharField(max_length=255,null=True)
 	unit = models.CharField(max_length=255,null=True)
 	price = MoneyField(
         decimal_places=2,
         default=0,
         default_currency='EUR',
-        max_digits=11,
+        max_digits=19,
     )
 	product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
