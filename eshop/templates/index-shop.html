@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+        <!-- Header -->
+        <header id="headerwrap" class="backstretched fullheight">
+            <div class="container vertical-center">
+                <div class="intro-text vertical-center text-left smoothie">
+                    <div class="intro-heading wow fadeIn heading-font" data-wow-delay="0.2s">This Is WS Project</div>
+                    <div class="intro-sub-heading wow fadeIn secondary-font" data-wow-delay="0.4s">Take a look at our <span class="rotate">awesome home pages, sexy portfolio items, flexible blog examples</span></div>
+                </div>
+            </div>
+        </header>
+
+        <section>
+            <div class="section-inner">
+                <div class="container">
+                    <div class="row mb50">
+                        {% for product in products %}
+                            <div class="col-md-4">
+                                <div class="hover-item mb30">
+                                    <img src="{{product.image}}" class="img-responsive smoothie" alt="">
+                                    <div class="overlay-item-caption smoothie"></div>
+                                    <div class="hover-item-caption smoothie">
+                                        <div class="vertical-center smoothie">
+                                            <a href="{{product.nameToUrl}}" class="smoothie btn btn-primary">View</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item-excerpt">
+                                    {% for productPrice in listProductsPrices %}
+                                        {% if productPrice.0 == product %}
+                                            <h4 class="pull-right">{{productPrice.1.price }}</h4>
+                                            <h4><a href="{{product.nameToUrl}}">{{product.name}}</a></h4>
+                                            <p>{{product.description}}</p>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endblock %}
