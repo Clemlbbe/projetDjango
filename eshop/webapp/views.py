@@ -74,7 +74,7 @@ def singlePostThin(request):
 
 def indexShop(request):
     productsList =  Product.objects.all()
-    paginator = Paginator(productsList,2)
+    paginator = Paginator(productsList,8)
     page = request.GET.get('page')
     products = paginator.get_page(page)
     return render(request,"index-shop.html", {"products": products})

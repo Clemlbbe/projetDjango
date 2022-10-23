@@ -2,21 +2,14 @@
 {% block content %}
 
         <!-- Header -->
-        <header id="headerwrap" class="backstretched fullheight">
-            <div class="container vertical-center">
-                <div class="intro-text vertical-center text-left smoothie">
-                    <div class="intro-heading wow fadeIn heading-font" data-wow-delay="0.2s">This Is WS Project</div>
-                    <div class="intro-sub-heading wow fadeIn secondary-font" data-wow-delay="0.4s">Take a look at our <span class="rotate">awesome home pages, sexy portfolio items, flexible blog examples</span></div>
-                </div>
-            </div>
-        </header>
+
 
         <section>
             <div class="section-inner">
-                <div class="container col-md-12">
-                    <ul class="list-group list-group-horizontal">
+                <div class="container-fluid">
+                    <ul class="row list-group">
                         {% for product in products %}
-                            <li class="col-md-3 list-group-item">
+                            <li class="col-xs-6 col-md-3 list-group-item">
                                 <div class="hover-item mb40">
                                     <img src="{{product.image}}" class="img-responsive smoothie" alt="">
                                     <div class="overlay-item-caption smoothie"></div>
@@ -25,46 +18,59 @@
                                             <a href="{{product.nameToUrl}}" class="smoothie btn btn-primary">View</a>
                                         </div>
                                     </div>
+                                    <div class="item-excerpt">
+                                        <h4 class="pull-right">{{product.minimumPrice}}</h4>
+                                        <h4><a href="{{product.nameToUrl}}">{{product.name}}</a></h4>
+                                    </div>
                                 </div>
-                                <div class="item-excerpt">
-                                    <h4 class="pull-right">{{product.minimumPrice}}</h4>
-                                    <h4><a href="{{product.nameToUrl}}">{{product.name}}</a></h4>
-                                </div>
+
                             </li>
                         {% endfor %}
                     </ul>
                 </div>
-                <div>
-                    <nav class="text-center"aria-label="...">
-                        <ul class="pagination pagination-lg">
-                            {% if products.has_previous %}
-                                {% if products.previous_page_number != 1 %} 
-                                    <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+                <div class="text-center">    
+                    <ul class="pagination pagination-lg">
+                        {% if products.has_previous %}
+                            <li class="page-item"><a class="page-link" href="?page={{ products.previous_page_number }}">⟵</a></li>
+                        {% endif %}
+                        {%if products.has_next %}
+                            <li class="page-item"><a class="page-link" href="?page={{ products.next_page_number }}">⟶</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="text-center">
+                    <ul class="pagination pagination-lg">
+                        {% if products.has_previous %}
+                            {% if products.previous_page_number != 1 %} 
+                                <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+                                {% if products.previous_page_number > 2 %}
                                     <li class="page-item disabled">
                                         <a class="page-link" href="#" tabindex="-1">...</a>
                                     </li>
-                                    <li class="page-item"><a class="page-link" href="?page={{ products.previous_page_number }}">{{ products.previous_page_number }}</a></li>
-                                {% else %}
-                                    <li class="page-item"><a class="page-link" href="?page={{ products.previous_page_number }}">{{ products.previous_page_number }}</a></li>                                   
                                 {% endif %}
+                                <li class="page-item"><a class="page-link" href="?page={{ products.previous_page_number }}">{{ products.previous_page_number }}</a></li> 
+                            {% else %}
+                                <li class="page-item"><a class="page-link" href="?page={{ products.previous_page_number }}">{{ products.previous_page_number }}</a></li>                                   
                             {% endif %}
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1">{{ products.number }}</a>
-                            </li>                    
-                            {% if products.has_next %}
-                                {% if products.next_page_number != products.paginator.num_pages %} 
-                                    <li class="page-item"><a class="page-link" href="?page={{ products.next_page_number }}">{{ products.next_page_number }}</a></li>
+                        {% endif %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">{{ products.number }}</a>
+                        </li>                    
+                        {% if products.has_next %}
+                            {% if products.next_page_number != products.paginator.num_pages %} 
+                                <li class="page-item"><a class="page-link" href="?page={{ products.next_page_number }}">{{ products.next_page_number }}</a></li>
+                                {% if products.next_page_number.next_page_number != products.paginator.num_pages %}
                                     <li class="page-item disabled">
                                         <a class="page-link" href="#" tabindex="-1">...</a>
-                                    </li>    
-                                    <li class="page-item"><a class="page-link" href="?page={{ products.paginator.num_pages }}">{{ products.paginator.num_pages }}</a></li>
-                                {% else %}
-                                    <li class="page-item"><a class="page-link" href="?page={{ products.next_page_number }}">{{ products.next_page_number }}</a></li>
-                                {% endif %}
+                                    </li>
+                                {% endif %}    
+                                <li class="page-item"><a class="page-link" href="?page={{ products.paginator.num_pages }}">{{ products.paginator.num_pages }}</a></li>
+                            {% else %}
+                                <li class="page-item"><a class="page-link" href="?page={{ products.next_page_number }}">{{ products.next_page_number }}</a></li>
                             {% endif %}
-                        </ul>
-                    </nav>
+                        {% endif %}
+                    </ul>
                 </div>
-            </div>
+            
         </section>
     {% endblock %}
