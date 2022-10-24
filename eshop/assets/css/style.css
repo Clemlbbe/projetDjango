@@ -1653,14 +1653,14 @@ footer.white-wrapper .social-links li a {
 
 .dark-wrapper .form-control {
     border: none;
-    border-bottom: 3px solid #fff;
+    border-bottom: 3px solid #222;
     background-color: rgba(0, 0, 0, 0.0);
 }
 
 .dark-wrapper .form-control:focus,
 .dark-wrapper .form-control.col-md-4:focus {
     border: none;
-    color: #fff;
+    color: #222;
     border-bottom: 3px solid #222;
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -1726,27 +1726,27 @@ footer.white-wrapper .social-links li a {
 
 .dark-wrapper .form-control::-webkit-input-placeholder,
 .white-text .form-control::-webkit-input-placeholder {
-    color: #fff;
+    color: #333;
     font-weight: 700;
     text-transform: uppercase;
 }
 
 .dark-wrapper .form-control:-moz-placeholder {
     /* Firefox 18- */
-    color: #fff;
+    color: #333;
     font-weight: 700;
     text-transform: uppercase;
 }
 
 .dark-wrapper .form-control::-moz-placeholder {
     /* Firefox 19+ */
-    color: #fff;
+    color: #333;
     font-weight: 700;
     text-transform: uppercase;
 }
 
 .dark-wrapper .form-control:-ms-input-placeholder {
-    color: #fff;
+    color: #333;
     font-weight: 700;
     text-transform: uppercase;
 }

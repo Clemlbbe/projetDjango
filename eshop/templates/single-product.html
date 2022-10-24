@@ -1,11 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
 
-        <section class="dark-wrapper opaqued parallax" data-parallax="scroll" data-image-src="assets/img/bg/bg2.jpg" data-speed="0.7">
-            <div class="section-inner pad-top-200">
-            </div>
-        </section>
-
         <section>
             <div class="section-inner">
                 <div class="container">
@@ -20,8 +15,8 @@
                                         </a>
 
                                         <div class="thumbnails mt">
-                                            <a class="lb-link" data-rel="product-gallery" href="{{product.image}}" title="Image Title 2">
-                                                <img alt="image title" height="100" width="100" src="{{product.image}}">
+                                            <a id="flavourLink" class="lb-link" data-rel="product-gallery" href="{{product.image}}" title="Image Title 2">
+                                                <img id="flavourImg" alt="image title" height="100" width="100" src="{{product.image}}">
                                             </a>
                                             <a class="lb-link" data-rel="product-gallery" href="{{product.image}}" title="Image Title 2">
                                                 <img alt="image title" height="100" width="100" src="{{product.image}}">
@@ -62,10 +57,10 @@
                                                     <label>Flavour:</label>
                                                 </div>
                                                 <div>
-                                                    <select title="Select a flavour">
-                                                        <option> 1</option>
+                                                    <select id="flavours">
+                                                        <option>Default select</option>
                                                         {% for flavour in flavours %}
-                                                            <option>{{flavour.name}}</option>
+                                                            <option id="{{flavour}}" value="{{flavour}}" name="{{flavour.picture}}">{{flavour.name}}</option>
                                                         {% endfor %}
                                                     </select>
                                                 </div>
@@ -77,7 +72,7 @@
                                                     <label>Size:</label>
                                                 </div>
                                                 <div>
-                                                    <select title="Select a size">
+                                                    <select>
                                                         {% for size in sizes %}
                                                             <option>{{size.name}}</option>
                                                         {% endfor %}
@@ -243,5 +238,13 @@
             </div>
         </section>
 
- 
+<script type="text/javascript">
+    const selectElement = document.getElementById('flavours');
+    selectElement.addEventListener('change', (event) => {
+        document.getElementById("flavourLink").href = document.getElementById(event.target.value).attributes["name"].value;
+        document.getElementById("flavourImg").src = document.getElementById(event.target.value).attributes["name"].value;
+});
+
+</script>
+    
     {% endblock %}
